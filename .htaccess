@@ -1,4 +1,4 @@
 <ifmodule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^gallery/([0-9]+)$  gallery/?id=$1
+RewriteRule ^book/([0-9]+)$  book/?id=$1
 </ifmodule>
