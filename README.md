@@ -12,7 +12,7 @@
 如果不支持，请访问/book/?id=*BookID*  
 ### 示例Json
 ***
-* Book
+* Book  
 Sample: /book/145650
 		{
 		    "Parodies": [
