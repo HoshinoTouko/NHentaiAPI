@@ -42,6 +42,10 @@ function getGallery($bookID)
 {
 	//Load url
 	$html = file_get_html('http://nhentai.net/g/' . $bookID . '/');
+
+//debug
+//echo $html;
+
 	if ($html == '')
 	{
 		$dieObj = array("error" => "the book do not exist");
@@ -71,15 +75,15 @@ function getGallery($bookID)
 	
 	//Parodies Characters Tags Artists Groups Language Category
 
-$Parodies = getClassNamedFieldName($html, 0);
-	$Characters = getClassNamedFieldName($html, 1);
-	$Tags = getClassNamedFieldName($html, 2);
-	$Artists = getClassNamedFieldName($html, 3);
-	$Groups = getClassNamedFieldName($html, 4);
-	$Language = getClassNamedFieldName($html, 5);
-	$Category = getClassNamedFieldName($html, 6);
+getClassNamedFieldName($html);
 
-	
+//	$Parodies = getClassNamedFieldName($html, 0);
+//	$Characters = getClassNamedFieldName($html, 1);
+//	$Tags = getClassNamedFieldName($html, 2);
+//	$Artists = getClassNamedFieldName($html, 3);
+//	$Groups = getClassNamedFieldName($html, 4);
+//	$Language = getClassNamedFieldName($html, 5);
+//	$Category = getClassNamedFieldName($html, 6);
 	
 	
 	//uploadTime
@@ -128,9 +132,22 @@ $Parodies = getClassNamedFieldName($html, 0);
 	
 }
 
-function getClassNamedFieldName($temphtml, $num)
+function getClassNamedFieldName($temphtml)
 {
-	$tempText = $temphtml->find('div[class=field-name]', $num);
+
+$i = 0;
+
+while (getClassNamedFieldName($html, $i) != '')
+{
+
+$tempText = $temphtml->find('div[class=field-name]', $num);
+$t = getBetween ($tempText, 'class="field-name">', ':')
+
+//debug
+//echo $tempText;
+//die;
+
+
 	$fieldNameResult = array();
 	$jj = 0;
 	do
@@ -140,7 +157,10 @@ function getClassNamedFieldName($temphtml, $num)
 		$jj++;
 	}
 	while(GetBetween($tempText->find('a', $jj), '>', ' <span') != '');
-	return $fieldNameResult;
+	$$t = $fieldNameResult;
+
+}	
+
 }
 
 
