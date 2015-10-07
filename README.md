@@ -13,7 +13,7 @@
 ### 示例Json
 ***
 * Book  
-Sample: /book/145650
+Sample: /book/145650  
 		{
 		    "Parodies": [
 		        "kantai collection"
