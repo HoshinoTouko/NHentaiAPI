@@ -42,6 +42,12 @@ function getGallery($bookID)
 {
 	//Load url
 	$html = file_get_html('http://nhentai.net/g/' . $bookID . '/');
+	if ($html == '')
+	{
+		$dieObj = array("error" => "the book do not exist");
+		echo json_encode($dieObj);
+		die;
+	}
 
 	//Find Gallery ID
 	$tempTextForID = $html->find('a[href=/g/' . $bookID . '/1/]',0);
