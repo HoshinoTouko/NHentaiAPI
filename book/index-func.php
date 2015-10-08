@@ -42,10 +42,6 @@ function getGallery($bookID)
 {
 	//Load url
 	$html = file_get_html('http://nhentai.net/g/' . $bookID . '/');
-
-//debug
-//echo $html;
-
 	if ($html == '')
 	{
 		$dieObj = array("error" => "the book do not exist");
@@ -75,15 +71,31 @@ function getGallery($bookID)
 	
 	//Parodies Characters Tags Artists Groups Language Category
 
-getClassNamedFieldName($html);
+$tagshtml = $html->find('div[id=info]', 0);
+//debug
+//echo $tagshtml;
+//echo $html;
+//debug end
+$tagscount = substr_count($tagshtml, 'class="field-name"')
+;
 
-//	$Parodies = getClassNamedFieldName($html, 0);
+echo $tagscount;die;
+while ($tagscount >= 0)
+{
+getClassNamedFieldName($tagshtml, $tagscount - 1);
+$tagscount --;
+}
+
+
+//  $Parodies = getClassNamedFieldName($html, 0);
 //	$Characters = getClassNamedFieldName($html, 1);
 //	$Tags = getClassNamedFieldName($html, 2);
 //	$Artists = getClassNamedFieldName($html, 3);
 //	$Groups = getClassNamedFieldName($html, 4);
 //	$Language = getClassNamedFieldName($html, 5);
 //	$Category = getClassNamedFieldName($html, 6);
+
+	
 	
 	
 	//uploadTime
@@ -132,35 +144,23 @@ getClassNamedFieldName($html);
 	
 }
 
-function getClassNamedFieldName($temphtml)
+function getClassNamedFieldName($temphtml, $num)
 {
+	$tempText = $temphtml->find('div[class=field-name]', $num);
 
-$i = 0;
-
-while (getClassNamedFieldName($html, $i) != '')
-{
-
-$tempText = $temphtml->find('div[class=field-name]', $num);
-$t = getBetween ($tempText, 'class="field-name">', ':')
-
-//debug
-//echo $tempText;
-//die;
-
-
-	$fieldNameResult = array();
+  $fieldNameResult = GetBetween($tempText , 'class="field-name">', ':' );
+echo  $fieldNameResult ;die;
+   global $$fieldNameResult = array();
+	
 	$jj = 0;
 	do
 	{
 		$tempItem = trim(GetBetween($tempText->find('a', $jj), '>', ' <span')); 
-		array_push($fieldNameResult, $tempItem);
+		array_push($$fieldNameResult, $tempItem);
 		$jj++;
 	}
 	while(GetBetween($tempText->find('a', $jj), '>', ' <span') != '');
-	$$t = $fieldNameResult;
-
-}	
-
+	//return $fieldNameResult;
 }
 
 

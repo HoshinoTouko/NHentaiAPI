@@ -71,6 +71,14 @@ function getGallery($bookID)
 	
 	//Parodies Characters Tags Artists Groups Language Category
 
+$tagscount = substr_count($html, 'class="field-name"')
+;
+echo $tagscount . '<br>' ;
+if ( $tagscount != 7)
+{echo 'Please Wait.';
+die;
+}
+
 $Parodies = getClassNamedFieldName($html, 0);
 	$Characters = getClassNamedFieldName($html, 1);
 	$Tags = getClassNamedFieldName($html, 2);
