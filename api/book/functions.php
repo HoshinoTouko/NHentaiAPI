@@ -1,4 +1,8 @@
 <?php
+
+//引用simple_html_dom
+include_once("../simple_html_dom.php"); 
+
 //Functions
 function getGallery($bookID)
 {

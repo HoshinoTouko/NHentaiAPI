@@ -26,10 +26,7 @@ include("functions.php");
 ?>
 
 <?php 
-//引用simple_html_dom
-include_once("../simple_html_dom.php"); 
-
-//返回信息
+//main
 echo urldecode(getGallery($bookID));
 ?>
 
