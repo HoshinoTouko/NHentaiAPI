@@ -1,4 +1,7 @@
 <ifmodule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^book/([0-9]+)$  book/?id=$1
+
+RewriteRule ^book/([0-9]+)$  api/book/?id=$1
+RewriteRule ^book  api/book/
+
 </ifmodule>
