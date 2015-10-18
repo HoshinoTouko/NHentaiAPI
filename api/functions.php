@@ -95,12 +95,17 @@ function getGalleryInfo($url)
 	$output = array();
 	//Load url
 	$html = file_get_html($url);
-	if ($html == ''){noBook();}
+	if ($html == '')
+	{
+		$dieObj = array("error" => "the book do not exist");
+		echo json_encode($dieObj);
+		die;
+	}
 	
 	//CountGallerys
 	$galleryCount = substr_count($html, 'class="gallery"');
 	$i = 0;
-	while($i <= $galleryCount)
+	while($i < $galleryCount)
 	{
 		$tempText = $html->find('div[class=gallery]', $i);
 		
