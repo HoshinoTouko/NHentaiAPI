@@ -105,7 +105,7 @@ function getGalleryInfo($url)
 	//CountGallerys
 	$galleryCount = substr_count($html, 'class="gallery"');
 	$i = 0;
-	while($i < $galleryCount)
+	while($i < $galleryCount) 
 	{
 		$tempText = $html->find('div[class=gallery]', $i);
 		
