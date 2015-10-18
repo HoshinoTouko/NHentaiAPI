@@ -1,15 +1,18 @@
 # NHentaiAPI  
 [Github地址](https://github.com/HoshinoTouko/NHentaiAPI)  
-[示例页面](http://demo.touko.moe/nhentai/book/145650)  
+[示例页面 Book](http://demo.touko.moe/nhentai/g/145650)  
+[示例页面 Home](http://demo.touko.moe/nhentai/home)  
 # 概述
 一个用于获取NHentai漫画信息并且返回Json的PHP程序  
 #### 仍在开发中  
-# 更多信息请访问  
-[介绍页面](https://touko.moe/projects/nhentaiapi)  
+# 新增功能  
+* 2015-10-18 主页信息获取，推荐漫画信息获取   
+### 更多信息及示例JSON请访问  
+[介绍页面](https://touko.moe/nhentai-api)  
 # 目前可用
-/book/*BookID*  
-请开启.htaccess支持  
-如果不支持，请访问/book/?id=*BookID*  
+/g/*BookID*  
+/home/*page*  
+或者访问/api/g/?id=*BookID* /api/home/?page=*page*  
 # 引用
 本程序引用  
 * [PHP Simple HTML DOM Parser](http://simplehtmldom.sourceforge.net/)  

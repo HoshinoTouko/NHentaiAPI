@@ -25,8 +25,8 @@ while($row = mysql_fetch_array($result))
 mysql_close($con);
 
 
+//showMAC();
 
-showMAC();
 ?>
 
 

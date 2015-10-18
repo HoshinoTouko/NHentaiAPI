@@ -1,7 +1,12 @@
 <ifmodule mod_rewrite.c>
 RewriteEngine On
 
-RewriteRule ^book/([0-9]+)$  api/book/?id=$1
-RewriteRule ^book  api/book/
+RewriteRule ^g/([0-9]+)$  api/g/?id=$1
+RewriteRule ^g  api/g/
+
+RewriteRule ^home/([0-9]+)$  api/home/?page=$1
+RewriteRule ^home  api/home/
+
+RewriteRule ^analysis  api/analysis/
 
 </ifmodule>
