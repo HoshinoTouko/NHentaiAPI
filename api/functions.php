@@ -146,7 +146,7 @@ function getClassNamedFieldName($tempText, $num)
 }
 
 
-function getBetween($content,$start,$end)
+function getBetween($content, $start, $end)
 {
     $r = explode($start, $content);
     if (isset($r[1])){

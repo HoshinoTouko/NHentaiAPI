@@ -7,6 +7,9 @@ RewriteRule ^g  api/g/
 RewriteRule ^home/([0-9]+)$  api/home/?page=$1
 RewriteRule ^home  api/home/
 
+RewriteRule ^search/(.*)$  api/search/?words={$1}
+RewriteRule ^scarch  api/search/
+
 RewriteRule ^analysis  api/analysis/
 
 </ifmodule>
