@@ -7,7 +7,8 @@
 >http://demo.touko.moe/nhentai/home/@page  
 
 [示例搜索 Search](http://demo.touko.moe/nhentai/search/miku/2)  
->http://demo.touko.moe/nhentai/home/@key/@page    
+>http://demo.touko.moe/nhentai/home/@key/@page  
+
 # 概述
 一个用于获取NHentai漫画信息并且返回Json的PHP程序  
 #### 仍在开发中  
