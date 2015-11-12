@@ -58,6 +58,9 @@ function getGalleryDetailById($bookID)
 	
 	//uploadTimeText
 	$uploadTimeText = getBetween($html, 'datetime="' . $uploadTime . '">', '</time>');
+    
+    //getType
+    $fileType = getBetween($html, $galleryID . '/1t.', '" />');
 	
 	
 	$output = array
@@ -71,11 +74,11 @@ function getGalleryDetailById($bookID)
 		"Language" => $Language,
 		"Category" => $Category,
 		//End
-		"bigCoverImageUrl" => urlencode('http://t.nhentai.net/galleries/' . $galleryID . '/cover.jpg'),
+		"bigCoverImageUrl" => urlencode('http://t.nhentai.net/galleries/' . $galleryID . '/cover.' . $fileType),
 		"bookId" => $bookID,
 		"galleryId" => $galleryID,
 		"pageCount" => $pageCount,
-		"previewImageUrl" => urlencode('http://t.nhentai.net/galleries/' . $galleryID . '/thumb.jpg'),
+		"previewImageUrl" => urlencode('http://t.nhentai.net/galleries/' . $galleryID . '/thumb.' . $fileType),
 		"thumbHeight" => 0,
 		"thumbWidth" => 0,
 		"title" => $title,
@@ -112,14 +115,16 @@ function getGalleryInfo($url)
 		$bookID = getBetween($tempText, 'href="/g/', '/"');
 		$title = getBetween($tempText, 'class="caption">', '</div>');
 		$galleryID = getBetween($tempText, 't.nhentai.net/galleries/','/thumb');
+        
+        $galleryImgUrl = getBetween($tempText, 'img src="','"'); 
 		
 		$tempItem = array
 		(
 			"title" => $title,
 			"bookId" => $bookID,
 			"galleryId" => $galleryID,
-			"bigCoverImageUrl" => urlencode('http://t.nhentai.net/galleries/' . $galleryID . '/cover.jpg'),
-			"previewImageUrl" => urlencode('http://t.nhentai.net/galleries/' . $galleryID . '/thumb.jpg'),
+			//"bigCoverImageUrl" => urlencode('http://t.nhentai.net/galleries/' . $galleryID . '/cover.jpg'),
+			"previewImageUrl" => urlencode('http:' . $galleryImgUrl),
 		);
 		array_push($output, $tempItem);
 		$i++;
