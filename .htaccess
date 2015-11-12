@@ -10,6 +10,9 @@ RewriteRule ^home  api/home/
 RewriteRule ^search/(.*)$  api/search/?words={$1}
 RewriteRule ^scarch  api/search/
 
+RewriteRule ^t/(.*)$  api/t/?tagInfo=$1
+RewriteRule ^t  api/t/
+
 RewriteRule ^analysis  api/analysis/
 
 </ifmodule>

@@ -5,7 +5,55 @@ include_once("../simple_html_dom.php");
 
 //主要函数
 
+
+//获取Tag信息。如果无tag信息则返回漫画
+//用于/t
+function getTagsInfoByUrl($url)
+{
+    //Load url
+    $html = file_get_html($url);
+    
+    $classCount = substr_count($html, 'class="tag tag-'); 
+    
+    if($classCount == 0)
+    {
+        return getGalleryInfo($url);
+    }
+
+    if ($html == '')
+    {
+        $dieObj = array("error" => "404 Not Found");
+        echo json_encode($dieObj);
+        die;
+    }
+    $tempHtml = $html->find('div[id=tag-container]', 0);
+    //echo $tempHtml;
+    $output = array();
+    
+    $iii = 0;
+    while ($iii < $classCount)
+    {
+        $tempHtmlItem = $tempHtml->find('a[class=tag]', $iii);
+        $tagUrl = getbetween($tempHtmlItem, '<a href="/', '/"');
+        $tagFather = getbetween($tempHtmlItem, '<a href="/', '/');
+        $tagSon = getbetween($tagUrl, '/', '/"');
+        //echo $tagUrl . '<br>';
+        $tempItem = array
+        (
+            'tagUrl' => urlencode('http://nhentai.net/' . $tagUrl),
+            'tagFather' => $tagFather,
+            'tagSon' => $tagSon
+        );
+        array_push($output, $tempItem);
+        $iii ++;
+    }
+    return $output;
+}
+
+
+
 //获取某本漫画的详细信息 class="thumb-container"
+//用于/g
 function getGalleryDetailById($bookID)
 {
 	//Load url
@@ -93,6 +141,7 @@ function getGalleryDetailById($bookID)
 }
 
 //获取当前页面中class="gallery"的信息
+//用于/home等多处
 function getGalleryInfo($url)
 {
 	$output = array();
@@ -101,8 +150,8 @@ function getGalleryInfo($url)
 	if ($html == '')
 	{
 		$dieObj = array("error" => "the book do not exist");
-		echo json_encode($dieObj);
-		die;
+        echo json_encode($dieObj);
+        die;
 	}
 	
 	//CountGallerys
@@ -136,6 +185,7 @@ function getGalleryInfo($url)
 
 
 //次要函数
+
 function getClassNamedFieldName($tempText, $num)
 {
 	$result = array();
