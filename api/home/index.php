@@ -1,21 +1,25 @@
 <?php
 header('content-type:text/html;charset="utf-8"');
 error_reporting(0);
-//Í·²¿±£ÁôÐÅÏ¢
+//Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 //HoshinoTouko
 //2015-10-02 18:20
-//ÒýÓÃº¯Êý
+//ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½
 include("../functions.php");
 include("../config.php");
-//ÒýÓÃÍ³¼Æ
-include("../analysis/analysis.php"); 
+//ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½
+include("../analysis/analysis.php");
 Analysis();
-?>
 
 
-<?php
-$pageFromHome = $_GET['page'];
-if ($pageFromHome == ''){$pageFromHome = 1;}
+
+//===========================
+
+
+
+$pageFromHome = isset($_GET['page']) ? intval($_GET['page']) : -1;
+
+if ($pageFromHome === -1){$pageFromHome = 1;}
 $url = 'http://nhentai.net/?page=' . $pageFromHome;
 
 $galleryInfo = getGalleryInfo($url);

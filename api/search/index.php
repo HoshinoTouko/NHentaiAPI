@@ -1,20 +1,20 @@
 <?php
 header('content-type:text/html;charset="utf-8"');
 error_reporting(0);
-//Í·²¿±£ÁôÐÅÏ¢
+//Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 //HoshinoTouko
 //2015-10-02 18:20
-//ÒýÓÃº¯Êý
+//ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½
 include("../functions.php");
 include("../config.php");
-//ÒýÓÃÍ³¼Æ
-include("../analysis/analysis.php"); 
+//ï¿½ï¿½ï¿½ï¿½Í³ï¿½ï¿½
+include("../analysis/analysis.php");
 Analysis();
-?>
+
+//==========================================================
 
 
-<?php
-$wordsForSearch = $_GET['words'];
+$wordsForSearch = isset($_GET['words']) ? $_GET['words'] : null;
 $words = getBetween($wordsForSearch, '{', '/');
 $page = getBetween($wordsForSearch, '/', '}');
 $url = 'http://nhentai.net/search/?q=' . $words . '&page=' . $page;
