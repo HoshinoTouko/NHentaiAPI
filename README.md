@@ -2,6 +2,8 @@
 
 [Github地址](https://github.com/HoshinoTouko/NHentaiAPI)  
 
+## NHentai目前加入了CloudFlare真人认证，这个API就没有再重新写下去了
+
 # 目前可用  
 
 [示例页面 Book](http://demo.touko.moe/nhentai/g/145650)  
